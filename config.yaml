@@ -1,0 +1,17 @@
+brand: British_Airways
+data:
+  index_pairs: data/pairs_index.csv
+  cluster_pairs: data/pairs_cluster.csv
+  taxonomy: taxonomy/intents.yaml
+retrieval:
+  top_k: 5
+  min_score: 0.05
+  fallback_unfiltered: true
+gate:
+  confidence_tau: 0.55  # placeholder until precision/recall curve on full gold set
+  faithfulness_min_overlap: 0.12
+models:
+  classifier: llama-3.1-8b-instant
+  generator: llama-3.1-8b-instant
+  judge: mixtral-8x7b-32768
+  groq_base_url: https://api.groq.com/openai/v1

@@ -1,0 +1,15 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.python-version
+.env
+*.egg-info/
+.idea/
+.vscode/
+data/raw/
+data/twcs.csv
+retrieval/.index_cache/
+eval/runs/
+.DS_Store

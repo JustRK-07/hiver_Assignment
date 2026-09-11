@@ -1,0 +1,106 @@
+# Hand-merged after TF-IDF MiniBatchKMeans (k=10) on 2934 British_Airways
+# customer tweets. Clustering split delay/cancel poorly and dumped ~1300
+# tweets into a "thanks/ba/flight" bucket; labels below are the reviewed
+# taxonomy, not raw cluster ids.
+intents:
+  - id: flight_delay
+    description: Delayed departure/arrival, missed connection caused by delay, lack of delay information.
+    keywords:
+      - delay
+      - delayed
+      - late
+      - hours late
+      - sitting on the tarmac
+      - missed connection
+  - id: cancellation_rebook
+    description: Cancelled flight, rebooking, schedule change, stranded passengers.
+    keywords:
+      - cancel
+      - cancelled
+      - canceled
+      - rebook
+      - reschedule
+      - alternative flight
+      - stranded
+  - id: baggage
+    description: Lost, delayed, damaged, or missing baggage; baggage allowance questions.
+    keywords:
+      - baggage
+      - luggage
+      - bag
+      - suitcase
+      - lost property
+      - allowance
+      - delayed bag
+  - id: refund_compensation
+    description: Refunds, EU261/UK261 claims, vouchers, admin fees, complaint payouts.
+    keywords:
+      - refund
+      - compensation
+      - claim
+      - eu261
+      - voucher
+      - money back
+      - admin fee
+  - id: booking_checkin
+    description: Website/app errors, manage-my-booking, online check-in, ticket not found.
+    keywords:
+      - website
+      - manage my booking
+      - check in
+      - check-in
+      - app
+      - error
+      - booking reference
+      - cannot book
+      - login
+  - id: seats_upgrade
+    description: Seat selection, paid seats, upgrades, club/first availability.
+    keywords:
+      - seat
+      - seats
+      - upgrade
+      - extra legroom
+      - club world
+      - premium economy
+  - id: loyalty_avios
+    description: Executive Club, Avios, tier points, gold/silver status.
+    keywords:
+      - avios
+      - executive club
+      - tier points
+      - gold guest
+      - silver
+      - loyalty
+  - id: inflight_product
+    description: Catering, IFE, wifi, power outlets, cabin condition.
+    keywords:
+      - food
+      - meal
+      - vegan
+      - ife
+      - wifi
+      - wi-fi
+      - snack
+      - breakfast bar
+      - dirty
+  - id: airport_staff
+    description: Ground staff, lounge, boarding, T5, security, crew praise or complaint.
+    keywords:
+      - staff
+      - crew
+      - lounge
+      - boarding
+      - t5
+      - heathrow
+      - gate
+      - customer service
+  - id: general_query
+    description: Policy FAQs, praise with no issue, or messages that do not fit elsewhere.
+    keywords:
+      - flying
+      - id
+      - passport
+      - allowed
+      - question
+majority_intent: general_query

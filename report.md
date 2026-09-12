@@ -1,5 +1,17 @@
 # Report — British Airways Twitter Support Agent
 
+## Executive summary
+
+This is a deliberately conservative support agent: it should answer only when it
+can classify the request, find relevant historical BA evidence, and pass a
+faithfulness check; otherwise it escalates with a reason. On the 150-example
+adversarial evaluation set, the system reached **0.78 escalation F1**, **0.70
+escalation recall**, and **0.48 retrieval hit@5**, compared with **0.80
+escalation F1** and **0.00 retrieval hit@5** for the simple baseline. The
+headline should be read as a safety-oriented prototype result, not as a
+production success rate: the set is intentionally enriched for difficult
+escalation cases and is not an i.i.d. sample of BA traffic.
+
 ## 1. Architecture & Approach
 
 Our goal was to build a highly conservative auto-reply agent. In customer service, confidently giving the wrong answer (e.g., promising a refund that isn't due) is much worse than escalating to a human. Therefore, our pipeline is designed around a "fail-safe" architecture:
@@ -7,7 +19,7 @@ Our goal was to build a highly conservative auto-reply agent. In customer servic
 1. **Safety Gate (Tier 1):** Fast, deterministic regex rules catch severe cases (self-harm, fraud, legal threats, explicit human requests) before any LLM is called. 
 2. **Intent Classification:** We classify the ticket into one of 10 intents. If the LLM confidence falls below $\tau = 0.55$, we escalate. (A keyword-based classifier serves as a fallback).
 3. **Intent-Filtered Hybrid Retrieval:** We retrieve historical resolutions from a vector index using BM25 and TF-IDF cosine similarity. We filter for neighbours matching the predicted intent first.
-4. **Generation:** The LLM drafts a reply strictly grounded in the retrieved historical evidence.
+4. **Generation:** The LLM drafts a reply grounded in the retrieved historical evidence. With no API key, the same pipeline uses a retrieved-response template so the workflow remains reproducible.
 5. **Faithfulness Check:** A final lexical overlap check ensures the generated draft doesn't invent facts (like EU261 eligibility) missing from the retrieved context.
 
 **What we chose *not* to build:** We did not build live PNR lookups, automated refund execution, multi-turn dialogue trees, or an LLM-in-the-loop judge on the final send path (for latency and cost reasons).
@@ -51,7 +63,7 @@ We benchmarked the **System** against two baselines:
 The LLM classifier (`gpt-oss-20b`) is highly confident. The precision/recall curve is completely flat for $\tau \in [0.35, 0.55]$. We published 0.55 so that the keyword fallback (which produces much lower confidences) still has an effective gate. 
 
 **Why didn't System beat Simple on every metric?**
-Simple's escalation precision is 1.0 because it *only* escalates on exact regex matches (which are 100% accurate by definition). However, Simple misses ambiguous cases. The System trades a small amount of precision for higher recall (0.70 vs 0.667) and significantly vastly superior retrieval (0.48 vs 0.00). System Intent F1 is slightly lower by design: when the system safety-escalates, we map the predicted intent to `general_query` to avoid inventing an 11th class, slightly penalizing the F1 score in exchange for safety.
+Simple's escalation precision is 1.0 because it *only* escalates on exact regex matches (which are 100% accurate by definition). However, Simple misses ambiguous cases. The System trades a small amount of precision for higher recall (0.70 vs 0.667) and substantially better retrieval (0.48 vs 0.00). The retrieval metric is an exact historical tweet-ID hit, not a human judgement of answer quality. System Intent F1 is slightly lower by design: when the system safety-escalates, we map the predicted intent to `general_query` to avoid inventing an 11th class, slightly penalizing the F1 score in exchange for safety.
 
 ---
 
@@ -79,10 +91,18 @@ Simple's escalation precision is 1.0 because it *only* escalates on exact regex 
 
 We built an automated evaluation harness (`eval/judge.py`) using `qwen/qwen3.8-27b` to score 50 system outputs on a 1-5 scale across four dimensions: **Groundedness, Helpfulness, Tone, and Escalation Correctness**. We then hand-labelled these 50 rows (`eval/judge_human.csv`) to calculate agreement.
 
-**Agreement Caveat (Crucial):**
-- **Tone:** 58% exact match (96% within ±1).
-- **Escalation Correctness:** 94% exact match (Cohen's $\kappa=1.0$ on binarized data). *Note: The prompt provided the gold escalation flag, inflating this score artificially.*
-- **Groundedness:** **Only 26% exact match.**
+| Dimension | Exact agreement | Additional agreement |
+|---|---:|---:|
+| Groundedness | 26% | 86% within ±1 |
+| Helpfulness | 38% | 62% within ±1 |
+| Tone | 58% | 96% within ±1 |
+| Escalation correctness | 94% | Cohen's $\kappa=1.0$ after binarizing at score ≥4 |
+
+**Agreement caveat:** The escalation score is not an independent judge of the
+system decision: the judge prompt includes the gold escalation flag, and the
+human sheet uses the same flag. Its high agreement is therefore only a sanity
+check. More importantly, groundedness agreement is only 26% exact, so the
+judge is not trusted on the runtime send path.
 
 Because the LLM judge is highly unreliable at strict groundedness evaluation (often hallucinating that a generated refund policy was grounded in the text when it wasn't), **we do not use LLM-as-judge on the runtime send path**. Instead, we rely on a strict lexical overlap check (`overlap_ratio` in `faithfulness.py`). 
 
@@ -95,3 +115,13 @@ With one additional week, we would prioritize:
 2. **Context Stitching:** Stitch multi-part BA tweets (`1/2`, `2/2`) together so retrieval context isn't arbitrarily truncated.
 3. **True Double-Blind Annotation:** Recruit a second independent human rater for the 50 judge rows (with gold labels hidden) to report a mathematically sound Cohen's $\kappa$.
 4. **Intent-Conditioned Generation:** If a customer is clearly "upgrade fishing," inject a system prompt forcing a polite refusal template, overriding any historically retrieved neighbour that might have granted an upgrade.
+
+## 9. Reproduction and scope
+
+The README contains the complete setup and command sequence. The no-key path is
+fully runnable with the checked-in subsample and produces deterministic
+keyword/template behaviour; a Groq key enables the reported LLM classifier and
+generator results. The full source dataset is not committed because the
+assignment explicitly permits a subsample; `data/README.md` documents the
+expected source and extraction workflow. This prototype does not claim live
+booking-system access, policy verification, or the ability to execute refunds.

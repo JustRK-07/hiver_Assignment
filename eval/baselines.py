@@ -9,14 +9,16 @@ from agent.config import ROOT, load_taxonomy
 from agent.gate import tier1_gate
 from retrieval.hybrid import default_index
 
+# Trivial: majority intent + one canned sentence + never escalate.
+# Simple: same regex gate as production, keyword intent, 1-NN historical reply.
 CANNED = (
     "Thanks for contacting British Airways. A member of the team will review "
     "your booking and reply as soon as possible."
 )
 
 
-def trivial(text: str, taxonomy: dict | None = None) -> dict:
-    taxonomy = taxonomy or load_taxonomy()
+def trivial(text: str) -> dict:
+    taxonomy = load_taxonomy()
     intent = taxonomy.get("majority_intent", "general_query")
     return {
         "intent": intent,

@@ -1,0 +1,125 @@
+{
+  "metrics": {
+    "trivial": {
+      "system": "trivial",
+      "n": 150,
+      "intent_macro_f1": 0.01927710843373494,
+      "intent_accuracy": 0.10666666666666667,
+      "escalation": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 30
+      },
+      "auto_rate": 1.0,
+      "retrieval_hit_rate": 0.0,
+      "retrieval_n": 98
+    },
+    "simple": {
+      "system": "simple",
+      "n": 150,
+      "intent_macro_f1": 0.7320159317391621,
+      "intent_accuracy": 0.7,
+      "escalation": {
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1": 0.8,
+        "tp": 20,
+        "fp": 0,
+        "fn": 10
+      },
+      "auto_rate": 0.8666666666666667,
+      "retrieval_hit_rate": 0.0,
+      "retrieval_n": 98
+    },
+    "system": {
+      "system": "system",
+      "n": 150,
+      "intent_macro_f1": 0.712981346715692,
+      "intent_accuracy": 0.6733333333333333,
+      "escalation": {
+        "precision": 0.875,
+        "recall": 0.7,
+        "f1": 0.7777777777777777,
+        "tp": 21,
+        "fp": 3,
+        "fn": 9
+      },
+      "auto_rate": 0.84,
+      "retrieval_hit_rate": 0.47959183673469385,
+      "retrieval_n": 98
+    }
+  },
+  "tau_curve_escalation": [
+    {
+      "precision": 0.8695652173913043,
+      "recall": 0.6666666666666666,
+      "f1": 0.7547169811320754,
+      "tp": 20,
+      "fp": 3,
+      "fn": 10,
+      "tau": 0.35,
+      "classifier": "llm",
+      "auto_send_precision": 0.9212598425196851
+    },
+    {
+      "precision": 0.8695652173913043,
+      "recall": 0.6666666666666666,
+      "f1": 0.7547169811320754,
+      "tp": 20,
+      "fp": 3,
+      "fn": 10,
+      "tau": 0.45,
+      "classifier": "llm",
+      "auto_send_precision": 0.9212598425196851
+    },
+    {
+      "precision": 0.8695652173913043,
+      "recall": 0.6666666666666666,
+      "f1": 0.7547169811320754,
+      "tp": 20,
+      "fp": 3,
+      "fn": 10,
+      "tau": 0.55,
+      "classifier": "llm",
+      "auto_send_precision": 0.9212598425196851
+    },
+    {
+      "precision": 0.8,
+      "recall": 0.6666666666666666,
+      "f1": 0.7272727272727272,
+      "tp": 20,
+      "fp": 5,
+      "fn": 10,
+      "tau": 0.65,
+      "classifier": "llm",
+      "auto_send_precision": 0.92
+    },
+    {
+      "precision": 0.6774193548387096,
+      "recall": 0.7,
+      "f1": 0.6885245901639343,
+      "tp": 21,
+      "fp": 10,
+      "fn": 9,
+      "tau": 0.75,
+      "classifier": "llm",
+      "auto_send_precision": 0.9243697478991597
+    },
+    {
+      "precision": 0.5,
+      "recall": 0.7333333333333333,
+      "f1": 0.5945945945945945,
+      "tp": 22,
+      "fp": 22,
+      "fn": 8,
+      "tau": 0.85,
+      "classifier": "llm",
+      "auto_send_precision": 0.9245283018867925
+    }
+  ],
+  "suggested_tau": 0.35,
+  "gold_n": 150
+}

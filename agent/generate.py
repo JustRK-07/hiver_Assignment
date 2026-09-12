@@ -19,7 +19,12 @@ def _template_reply(ticket: str, hits: list[Hit]) -> str:
 
 
 def generate_reply(ticket: str, intent: str, hits: list[Hit]) -> tuple[str, str]:
-    """Returns (reply, source)."""
+    """Draft a reply from retrieved BA text only. Returns (reply, source).
+
+    Never invent EU261, refunds, or complimentary upgrades — if the neighbour
+    does not contain the action, the overlap check should fail or the model
+    must stay inside the evidence block.
+    """
     evidence = "\n".join(
         f"- Similar customer: {h.customer_text[:220]}\n  Historical reply: {h.company_text[:280]}"
         for h in hits
@@ -39,5 +44,8 @@ Evidence:
 {evidence}
 
 Write the reply only."""
-        return chat(prompt, model=cfg["models"]["generator"]).strip(), "llm"
+        try:
+            return chat(prompt, model=cfg["models"]["generator"]).strip(), "llm"
+        except Exception:
+            return _template_reply(ticket, hits), "template_fallback"
     return _template_reply(ticket, hits), "template"

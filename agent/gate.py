@@ -1,4 +1,10 @@
-"""Tier-1 deterministic escalation. Rule name is the reason."""
+"""Tier-1 deterministic escalation. Rule name is the reason.
+
+This runs BEFORE any LLM. A tweet about a lawsuit should not wait on Groq
+and should not be auto-replied from a similar-looking refund thread.
+Patterns are intentionally narrow (`kill myself`, not `kill`) so g033
+(delay + "killing my schedule") does not false-positive.
+"""
 
 from __future__ import annotations
 
@@ -38,7 +44,7 @@ RULES: list[tuple[str, re.Pattern[str]]] = [
             r"""
             \b(
                 solicitor | lawyer | lawsuit | sue\ you | court\ claim |
-                legal\ action | gdpr\ complaint
+                legal\ action | legal\ claim | small\ claims | gdpr\ complaint
             )\b
             """,
             FLAGS,
@@ -49,11 +55,12 @@ RULES: list[tuple[str, re.Pattern[str]]] = [
         re.compile(
             r"""
             \b(
-                speak\ to\ (a\ )?(human|person|manager|agent) |
+                speak\ to\ (a\ )?(human|person|manager|agent|someone) |
                 real\ (person|human) |
                 supervisor |
                 call\ me |
                 phone\ number |
+                picking\ up\ your\ phone |
                 I\ want\ a\ (human|person|manager)
             )\b
             """,

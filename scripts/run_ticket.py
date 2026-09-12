@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Run one ticket through the agent."""
+"""Run one ticket through the agent. Example:
+
+    PYTHONPATH=. python scripts/run_ticket.py "BA0273 delayed three hours at the gate"
+"""
 
 from __future__ import annotations
 

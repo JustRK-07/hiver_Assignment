@@ -1,51 +1,151 @@
-id,customer_text,gold_intent,gold_escalate,gold_escalate_reason,notes
-g001,Two days in a row! Yesterday my flight was delayed and today my flight has been delayed. What’s the point of buying more expensive flights,flight_delay,false,,single issue delay
-g002,stuck in Tampa after our flight has been cancelled. They are saying it’s not their responsibility to get us home,cancellation_rebook,false,,cancel plus stranded
-g003,can you please confirm if flight BA0834 LHR to Dublin 21/10/17 has been cancelled?,cancellation_rebook,false,,factual cancel check
-g004,such a great flight from HK then left standing at baggage for 30mins not a great impression to give our visitors,baggage,false,,delayed bags
-g005,I’ve tried all that. You have sent me wrong information over and over again. Nobody in your company has a clue and my trip is ruined because my bag is still missing,baggage,false,,"multi-issue: CS failure + lost bag; action is baggage"
-g006,I want a refund and compensation for the delay. This is a legal claim if you ignore me,refund_compensation,true,legal,legal keyword should tier-1 escalate even with refund intent
-g007,Enquired about changing a return flight to a few hours later for 4 people £150 each admin fee!! How can you justify that?,refund_compensation,false,,change fee complaint
-g008,1/3 how do I claim back costs for a missed connection? I cannot take the one you are giving as an alternative,refund_compensation,false,,missed connection costs
-g009,Manage My Booking broken again both app and desktop,booking_checkin,false,,website outage
-g010,hello i need your help to make the check in for my flight tomorrow please,booking_checkin,false,,check-in help
-g011,is manage my booking down? Need to check in for flight,booking_checkin,false,,
-g012,Can I at least reserve our seats? Because otherwise it's basically first come first serve,seats_upgrade,false,,
-g013,Hope so. Trying to get the seats I paid extra for on a LHR-ORD leg,seats_upgrade,false,,paid seats
-g014,Looking to fly with you on my first long haul how do I get a free upgrade any ideas please,seats_upgrade,false,,upgrade fishing; should not invent complimentary upgrade
-g015,is there a way about reclaiming expired Avios Points? Saved a fair few tried using today they expired 01 October,loyalty_avios,false,,
-g016,how long does it take for Tier points to show on my account please?,loyalty_avios,false,,
-g017,trying to claim missing Avios website asks for ticket number can't find that information anywhere,loyalty_avios,false,,
-g018,Hey guess what been on flight for 6 hours and again get a breakfast bar for a snack! It's 4pm in the afternoon to us. Appalling,inflight_product,false,,catering
-g019,how is this an acceptable power outlet on a modern plane in 2017? Add in lack of wifi,inflight_product,false,,ife/wifi/power
-g020,The crew was very friendly on the aircraft and the flight was short,airport_staff,false,,praise
-g021,When your T5 staff are too busy chatting to each other to inform you that your bag will be transferred automatically,airport_staff,false,,"staff + bag mention; primary is staff at T5"
-g022,I am flying tomorrow from Heathrow - Glasgow. Is my driving license sufficient ID?,general_query,false,,policy FAQ
-g023,I’m 16 years old and my brother is 15. Can we travel from Greece to the UK alone?,general_query,false,,UM policy; not self-harm
-g024,May I have a phone number or email to contact them? Thank you!,general_query,true,request_human,explicit contact request
-g025,I called customer service today and an automated message said the lines are open Monday through to Friday and then the line went dead. I wanted to speak to someone,general_query,true,request_human,wants a person
-g026,Thank you so much for calling back. The most POINTLESS phone call ever! Absolutely no attempt to resolve the complaint from BA.,airport_staff,false,,sarcasm/anger about CS; not a new operational ask
-g027,Booked 2 flights premium economy. The area around the seats were dirty and I had to clean this up with baby wipes. complained and sent pictures they accepted but not one penny back,inflight_product,false,,"multi-issue dirty cabin + refund denied; cabin is the event"
-g028,poor service today bumping me off 1st flight and 2nd due to man and computer error. Poor compensation and 4 hrs late for my meeting,flight_delay,false,,"multi-issue bump + compensation + delay"
-g029,I want to speak to a manager right now this is unacceptable,general_query,true,request_human,
-g030,someone booked a ticket in my name fraudulent charge on my card,general_query,true,fraud,
-g031,Guys I'm flying to Toronto in two days am I allowed to carry two bags one weighing 30kgs and other 15kgs?,baggage,false,,allowance FAQ
-g032,hi could you inform me how many 25g co2 canisters are permitted in my checked baggage in the hold NOT HAND BAGGAGE,baggage,false,,dangerous goods; conservative systems may still auto if retrieved policy-like text
-g033,Would rather kill the app than keep getting these delays oh wait I mean the delays are killing my schedule,flight_delay,false,,contains kill but not self-harm; gate must not false-positive on kill myself pattern only
-g034,Forget ryanair cancellations 2 wks ago delayed me by a day and a half and still haven't replied to my emails,flight_delay,false,,delay + ignored email
-g035,Bucket list airlines I’d love to fly,general_query,false,,no operational issue; auto canned or light reply is ok
-g036,I will sue you if my lost suitcase is not found by tonight I already have a lawyer,baggage,true,legal,lost bag PLUS legal
-g037,can someone help me I feel like I want to die after this cancelled holiday,cancellation_rebook,true,self_harm,must escalate regardless of cancel intent
-g038,Wanted to make an avios booking but system had wrong birthday,loyalty_avios,false,,account data + booking
-g039,shameful treatment of pax on BA502! Get us onboard and leave us over an hr then offload delays and no free refreshments,flight_delay,false,,delay + catering; delay is the operational failure
-g040,Well thanks that’s all I wanted when the seats are pretty much gone,seats_upgrade,false,,sarcastic seat unavailability
-g041,I haven't yet but I will now. What say you 6.40am from EDI to LGW and literally every single person walked on both flights without a single ID being checked!,airport_staff,false,,security process complaint
-g042,trying to book a reward flight but it's automatically defaulting to using the maximum of 40000 avios which I don't have,loyalty_avios,false,,
-g043,Hi I want some information right now. How can I contact you from Italy this time,general_query,true,request_human,contact channel
-g044,The new flight safety video is adorable,general_query,false,,praise no ticket
-g045,Booked a ticket including a flight on AA. Got AA record locator how long until I can see the flight Currently says not found,booking_checkin,false,,codeshare booking
-g046,Thank you for the help Karen,general_query,false,,acknowledgement; no new issue
-g047,20/10 BA4078 and the return BA0485 Not happy overpriced for service and missed a family birthday due to delay,flight_delay,false,,
-g048,I’ve been meaning to ask what happened to the Glen in Terraces at SFO?,airport_staff,false,,lounge/staff trivia
-g049,If I book a flight through BA that's operated by Vueling is it possible to choose my seat online?,seats_upgrade,false,,
-g050,I do have a case number but the response I've had so far was just call customer relations which I've done multiple times already,airport_staff,true,request_human,already looping; wants a human path
+id,customer_text,gold_intent,gold_escalate,gold_escalate_reason,notes,relevant_company_tweet_id
+g001,Two days in a row! Yesterday my flight was delayed and today my flight has been delayed. What’s the point of buying more expensive flights,flight_delay,false,,single issue delay,
+g002,stuck in Tampa after our flight has been cancelled. They are saying it’s not their responsibility to get us home,cancellation_rebook,false,,cancel plus stranded,
+g003,can you please confirm if flight BA0834 LHR to Dublin 21/10/17 has been cancelled?,cancellation_rebook,false,,factual cancel check,
+g004,such a great flight from HK then left standing at baggage for 30mins not a great impression to give our visitors,baggage,false,,delayed bags,
+g005,I’ve tried all that. You have sent me wrong information over and over again. Nobody in your company has a clue and my trip is ruined because my bag is still missing,baggage,false,,multi-issue: CS failure + lost bag; action is baggage,
+g006,I want a refund and compensation for the delay. This is a legal claim if you ignore me,refund_compensation,true,legal,legal keyword should tier-1 escalate even with refund intent,
+g007,Enquired about changing a return flight to a few hours later for 4 people £150 each admin fee!! How can you justify that?,refund_compensation,false,,change fee complaint,
+g008,1/3 how do I claim back costs for a missed connection? I cannot take the one you are giving as an alternative,refund_compensation,false,,missed connection costs,
+g009,Manage My Booking broken again both app and desktop,booking_checkin,false,,website outage,
+g010,hello i need your help to make the check in for my flight tomorrow please,booking_checkin,false,,check-in help,
+g011,is manage my booking down? Need to check in for flight,booking_checkin,false,,,
+g012,Can I at least reserve our seats? Because otherwise it's basically first come first serve,seats_upgrade,false,,,
+g013,Hope so. Trying to get the seats I paid extra for on a LHR-ORD leg,seats_upgrade,false,,paid seats,
+g014,Looking to fly with you on my first long haul how do I get a free upgrade any ideas please,seats_upgrade,false,,upgrade fishing; should not invent complimentary upgrade,
+g015,is there a way about reclaiming expired Avios Points? Saved a fair few tried using today they expired 01 October,loyalty_avios,false,,,
+g016,how long does it take for Tier points to show on my account please?,loyalty_avios,false,,,
+g017,trying to claim missing Avios website asks for ticket number can't find that information anywhere,loyalty_avios,false,,,
+g018,Hey guess what been on flight for 6 hours and again get a breakfast bar for a snack! It's 4pm in the afternoon to us. Appalling,inflight_product,false,,catering,
+g019,how is this an acceptable power outlet on a modern plane in 2017? Add in lack of wifi,inflight_product,false,,ife/wifi/power,
+g020,The crew was very friendly on the aircraft and the flight was short,airport_staff,false,,praise,
+g021,When your T5 staff are too busy chatting to each other to inform you that your bag will be transferred automatically,airport_staff,false,,staff + bag mention; primary is staff at T5,
+g022,I am flying tomorrow from Heathrow - Glasgow. Is my driving license sufficient ID?,general_query,false,,policy FAQ,
+g023,I’m 16 years old and my brother is 15. Can we travel from Greece to the UK alone?,general_query,false,,UM policy; not self-harm,
+g024,May I have a phone number or email to contact them? Thank you!,general_query,true,request_human,explicit contact request,
+g025,I called customer service today and an automated message said the lines are open Monday through to Friday and then the line went dead. I wanted to speak to someone,general_query,true,request_human,wants a person,
+g026,Thank you so much for calling back. The most POINTLESS phone call ever! Absolutely no attempt to resolve the complaint from BA.,airport_staff,false,,sarcasm/anger about CS; not a new operational ask,
+g027,Booked 2 flights premium economy. The area around the seats were dirty and I had to clean this up with baby wipes. complained and sent pictures they accepted but not one penny back,inflight_product,false,,multi-issue dirty cabin + refund denied; cabin is the event,
+g028,poor service today bumping me off 1st flight and 2nd due to man and computer error. Poor compensation and 4 hrs late for my meeting,flight_delay,false,,multi-issue bump + compensation + delay,
+g029,I want to speak to a manager right now this is unacceptable,general_query,true,request_human,,
+g030,someone booked a ticket in my name fraudulent charge on my card,general_query,true,fraud,,
+g031,Guys I'm flying to Toronto in two days am I allowed to carry two bags one weighing 30kgs and other 15kgs?,baggage,false,,allowance FAQ,
+g032,hi could you inform me how many 25g co2 canisters are permitted in my checked baggage in the hold NOT HAND BAGGAGE,baggage,false,,dangerous goods; conservative systems may still auto if retrieved policy-like text,
+g033,Would rather kill the app than keep getting these delays oh wait I mean the delays are killing my schedule,flight_delay,false,,contains kill but not self-harm; gate must not false-positive on kill myself pattern only,
+g034,Forget ryanair cancellations 2 wks ago delayed me by a day and a half and still haven't replied to my emails,flight_delay,false,,delay + ignored email,
+g035,Bucket list airlines I’d love to fly,general_query,false,,no operational issue; auto canned or light reply is ok,
+g036,I will sue you if my lost suitcase is not found by tonight I already have a lawyer,baggage,true,legal,lost bag PLUS legal,
+g037,can someone help me I feel like I want to die after this cancelled holiday,cancellation_rebook,true,self_harm,must escalate regardless of cancel intent,
+g038,Wanted to make an avios booking but system had wrong birthday,loyalty_avios,false,,account data + booking,
+g039,shameful treatment of pax on BA502! Get us onboard and leave us over an hr then offload delays and no free refreshments,flight_delay,false,,delay + catering; delay is the operational failure,
+g040,Well thanks that’s all I wanted when the seats are pretty much gone,seats_upgrade,false,,sarcastic seat unavailability,
+g041,I haven't yet but I will now. What say you 6.40am from EDI to LGW and literally every single person walked on both flights without a single ID being checked!,airport_staff,false,,security process complaint,
+g042,trying to book a reward flight but it's automatically defaulting to using the maximum of 40000 avios which I don't have,loyalty_avios,false,,,
+g043,Hi I want some information right now. How can I contact you from Italy this time,general_query,true,request_human,contact channel,
+g044,The new flight safety video is adorable,general_query,false,,praise no ticket,
+g045,Booked a ticket including a flight on AA. Got AA record locator how long until I can see the flight Currently says not found,booking_checkin,false,,codeshare booking,
+g046,Thank you for the help Karen,general_query,false,,acknowledgement; no new issue,
+g047,20/10 BA4078 and the return BA0485 Not happy overpriced for service and missed a family birthday due to delay,flight_delay,false,,,
+g048,I’ve been meaning to ask what happened to the Glen in Terraces at SFO?,airport_staff,false,,lounge/staff trivia,
+g049,If I book a flight through BA that's operated by Vueling is it possible to choose my seat online?,seats_upgrade,false,,,
+g050,I do have a case number but the response I've had so far was just call customer relations which I've done multiple times already,airport_staff,true,request_human,already looping; wants a human path,
+g051,"Laughable - 1454! 1 1/2 hrs late, no catering, no toilets below 15k ft and no overhead locker for 1D&amp;F as it is broken 😡",flight_delay,false,,multi: delay + catering; action is the delay,1517253
+g052,After the most horrific flight to MCO with my flight home tonight is ALREADY showing as delayed I’m absolutely dreading it,flight_delay,false,,repeat delay anxiety; operational delay,1590119
+g053,First flight for long time with . Now over one 1h delay for the short jump FRA-LCY and NO one here to provide status updates,flight_delay,false,,"short-haul delay, no status updates",966455
+g054,"not overly delighted at the long delay from Edinburgh today, nor the lack of information as to why or that I’m not home yet",flight_delay,false,,delay + missing ETA,5035
+g055,"No conflicting information, just low confidence in the punctuality of BA after my 26+ hour delay last weekend",flight_delay,false,,punctuality distrust after a 26h delay,1987612
+g056,"flight Number BA0471 absolute joke, waiting over 3 hours before flying, not enough food #takesthepiss #sortitout",flight_delay,false,,3h wait then food; delay is the event,2665013
+g057,delayed due to weather fair enough.. unable to check in due to dodgy desk and then moved seats &amp; only 1 lady at desk. POOR,flight_delay,false,,multi: weather delay + check-in + seats,2003227
+g058,you have cancelled my flight!!! I need to get to my brothers wedding. Why are you not picking up your phone!!! 😢,cancellation_rebook,true,request_human,cancelled + cannot reach phone; needs a human,648111
+g059,then why do you put flights on for people to book then cancel them that doesn't avoid disruption that aids it,cancellation_rebook,false,,schedule posted then cancelled,367112
+g060,Not impressed Just drove an hour for LHR flight to Leeds. Turn up and can’t get through. Flight cancelled no notification.,cancellation_rebook,false,,cancelled with no notification at airport,1643427
+g061,"what an absolute farce at Oslo Airport tonight, nearly 6 hours since my flight was cancelled and still in a queue for a hotel manned by one person",cancellation_rebook,false,,cancelled; stranded in hotel queue,666751
+g062,hi! My parents flight was cancelled yday and I was wondering if this affected their car booking hire in FL?,cancellation_rebook,false,,knock-on hire-car after cancel,1644885
+g063,Flown with 4 times already this year &amp; now won’t let me change the name on a booking unless I cancel and pay 3x the original flight cost - absolutely disgusting! Back to Emirates we go...,cancellation_rebook,false,,name change only via cancel-and-rebook,2877200
+g064,been queuing for 2 hrs at #LHR trying to rebook #YYC flight missed earlier due to connection delays from fog! ☹️☹️,cancellation_rebook,false,,missed connection; wants rebook,1502229
+g065,"Indeed! Got rebooked on a new flight free of charge, for which I'm very grateful!",cancellation_rebook,false,,"already rebooked; gratitude, still cancel class",933486
+g066,please locate my bag.. DTW-ORD-LHR-SNN. I know the bag made it to ORD. 48hrs missing and no update on file ref Help! Please,baggage,false,,"missing bag, known last scan ORD",349484
+g067,I can't believe you lost a suitcase AGAIN!!! When are you going to get your system right? You suck! #britishairwayssucks,baggage,false,,repeat lost suitcase,121757
+g068,"your lost property line is useless i have a bf in orlando with no luggage and £1,000 worth of cameras and laptop missing !!",baggage,false,,lost property with high-value items,292470
+g069,hi.. I’m off to TFS business next week.. is the allowance 2xchecked per passenger... i.e 64k each?,baggage,false,,checked-bag allowance FAQ,2610534
+g070,please advise what baggage permitted on booking ref UXAXO8. Thx,baggage,false,,allowance on a specific PNR — FAQ-shaped,781343
+g071,I was wondering if I could take a penny board with me (handbags only) on the flight from Austria to London and back?,baggage,false,,cabin item (penny board) policy,1904337
+g072,Hello We arrived in Cape Town 4 days ago after a lovely flight with you. Will still don’t have our pram though Please help?,baggage,false,,missing pram four days after arrival,2008393
+g073,thanks a lot for loosing bags and your customer care is horrendous.Been online for over 10 mins.Is that normal??🤦‍♂️🤦‍♀️,baggage,false,,sarcastic thanks for lost bags,482194
+g074,outraged at BA treatment no refunds and money making flight changes to existing flights despite hurricane and FCO guidance,refund_compensation,false,,no refunds after hurricane disruption,825247
+g075,"Ok thanks Danny, that’s a bit rubbish then as it’s around $200 in a taxi, will see how I get on submitting a compensation claim",refund_compensation,false,,taxi cost; wants to file a claim,1447493
+g076,"absolutely disgusted, our flight was supposed to land at 20.15, we landed at 23.13, and because of those TWO minutes I’m not allowed compensation. I don’t believe for a second we landed 23.13. 1/2",refund_compensation,false,,EU261 disputed landing time,2225221
+g077,"Hi British Airways, I am trying to help my brother and sister claim EU compensation. Can you help me? I filled the form in online but I made a mistake! I also do not have a confirmation email! Thanks",refund_compensation,false,,"EU261 form error, wants help",2493421
+g078,Don’t ever fly - awful rude service on our “business class” honeymoon flight and now given paltry £50 compensation!,refund_compensation,false,,paltry £50 after poor club service,369334
+g079,displayed wrong information on board resulted in a 1 hour flight home turned into a 10 hour bus jounery - no compensation!.,refund_compensation,false,,misinfo led to bus journey; no payout,848835
+g080,Hello !! I replied to your email with details of my flight . What is taking you so long to refund?,refund_compensation,false,,chasing an already-requested refund,230480
+g081,"hi, I'm waiting to hear back from your customer service team re a refund on my flight. When will I receive a response?",refund_compensation,false,,waiting on CS for a refund,1618805
+g082,I'm trying to book a flight through your website but I'm having some difficulties... how can I get help? Thanks,booking_checkin,false,,website booking friction,544109
+g083,is it normal that online check in is unavailable at Dubrovnik?,booking_checkin,false,,online check-in unavailable,291939
+g084,I am unable to check-in online for my flight leaving in 7 hours. I've been trying since 9pm last night but it keeps telling me I haven't provided enough passport information but everything is completed when I try and fill the rest out. I am using your website.,booking_checkin,false,,check-in rejects complete passport data,2810677
+g085,There's wrong with your website?,booking_checkin,false,,website broken,664790
+g086,I need to change a flight for an emergency and can't access 'manage my booking' - could you please help me?,booking_checkin,true,ambiguous_needs_human,emergency date change + MMB down,439346
+g087,"what’s wrong with your systems? I can’t change a flight, technical difficulties? I need to get it sorted ASAP. Thanks.",booking_checkin,false,,"cannot change flight, systems error",1420305
+g088,I was trying to change my flight date but I cant because of sellinghelper system error. Can you fix it please,booking_checkin,false,,third-party helper error blocking date change,365751
+g089,can you tell me when the Check in desk is opening on Brussel Airport for flight BA389?,booking_checkin,false,,desk opening time FAQ,347037
+g090,I'm trying to reserve a seat for my flight (paying accordingly) from the app and I can't choose any.,seats_upgrade,false,,paid seat map empty in app,366250
+g091,Having to pay to reserve my business class seat is immoral. Air Canada didn't charge me extra. why do you? It's extortion,seats_upgrade,false,,charged to reserve a club seat,2785978
+g092,can I pay to upgrade an economy reward flight? It doesn't seem to be an option online. If so can you cost this for me please?,seats_upgrade,false,,pay-to-upgrade an Avios reward,519598
+g093,Hey I’m off to NYC tmrw on a school trip. Any chance you could upgrade a few of our teachers seats if there’s any spare🤞🏼,seats_upgrade,false,,asks complimentary upgrade — do not invent,1844268
+g094,I need help. Flying on Monday and I'm claustrophobic. Paid extra to reserve seats at front of aircraft but you've put us in row 26. Please help.,seats_upgrade,true,ambiguous_needs_human,"paid front seats, assigned row 26, claustrophobia",548528
+g095,"Hi, If I bought twin seat, does that mean my travel partner (adult) does not need to purchase any seat ?",seats_upgrade,false,,twin-seat product FAQ,1918938
+g096,As a bronze exec club member I should be able to select my seat 7 days before travel but it’s still trying to charge me,seats_upgrade,false,,bronze free-seat window not honoured,1986289
+g097,"EVERYTIME I choose a seat it changes though, unless I'm in club Europe, which I no longer bother with",seats_upgrade,false,,selected seat keeps changing,914967
+g098,"Hey I have questions on my exec club profile and combining avios, what email can I use to contact you as it’s not clear?",loyalty_avios,false,,exec club / combine Avios contact path,36189
+g099,Can I add a frequent flyer number to a booking I made for a travel companion after we’ve had the flight? I’m exec club silver but companion’s number wasn’t added at time of booking.,loyalty_avios,false,,add companion frequent-flyer after travel,2049189
+g100,How do I go about switching from executive club and taking avios pts with me?,loyalty_avios,false,,leave exec club and take Avios,886515
+g101,is there a way to combine two peoples avios points for payment on a hotel. Thanks,loyalty_avios,false,,pool two members' Avios for a hotel,2035002
+g102,Exec Club Silver missing points from intl flights flown recently. Please help?,loyalty_avios,false,,missing silver points on intl flights,2530432
+g103,"I found your exact same flight for a 3rd of the price online, do you price match? executive cab silver member..",loyalty_avios,false,,price-match ask as silver — do not invent,1339975
+g104,"FYI Fly with you every week, you keep losing bookings and Silver Exec club CS clueless and speak terrible English. Pls fix.",loyalty_avios,false,,silver CS complaint + lost bookings,2569328
+g105,How can I retrieve a ticket number if it was bought by an agency?Need this to reclaim some Avios please.Inbox me please,loyalty_avios,false,,agency ticket number needed to reclaim Avios,385993
+g106,"Food which look delicious ,, is certainly not having any taste in flight",inflight_product,false,,"meal looks good, no taste",2268335
+g107,Can you tell me whether BA 294 ORD to LHR has Wifi and power in World Traveler Plus?,inflight_product,false,,WTP wifi/power FAQ,164472
+g108,"A note for anyone who needs to be Gluten free on Take food with you, and definitely don't expect any breakfast! Recent overnight from New York. Breakfast option was a cereal bar or malt loaf and no GF option provided.",inflight_product,false,,no usable gluten-free breakfast,2611422
+g109,once again no Coeliac/gluten free meal on board my flight to Dubai today despite adding to My Booking,inflight_product,false,,GF meal missing despite SSR,1056707
+g110,"Hi BA, do you offer WiFi on A380's yet? BA031 to HK today specifically... Thanks",inflight_product,false,,A380 wifi FAQ,2838966
+g111,hi just left flight BA 0890 London to Sofia and I left my notebook on the plane. Went back to get it and it wasn't there anymore. Please help it has important information and the entirety of the past 6 months of my life. Soft cover beige:,inflight_product,true,ambiguous_needs_human,left notebook onboard — needs a trace,2174644
+g112,CRACKED computer screen caused malfunctioning BA seat recliner. Offered 50 pound rebate towards a BA flight. Cheap n nasty,inflight_product,false,,broken recliner / cracked IFE; paltry rebate,381323
+g113,Terrible service at Heathrow this morning. Now stuck in Madrid trying to get to Havana without going via Med city. HELP?,airport_staff,false,,"Heathrow service failure, misconnect Madrid",1551481
+g114,"staff were very disinterested+unhelpful. Another customer asked for wine, was given a closed bottle and corkscrew, no glass",airport_staff,false,,lounge staff handed wine with no glass,1390434
+g115,Left my iPad in BA lounge . Was on CathayPacific flight CX899 on Nov 26th. Pls advise if found.,airport_staff,true,ambiguous_needs_human,iPad left in lounge — lost property,2826608
+g116,just a quick thank you to the staff at Edinburgh who so far have made my mum &amp; step dads unexpected trip to Boston easier,airport_staff,false,,genuine staff praise EDI,1451919
+g117,people are quick to complain however I wanted to say how Fantastic the crew were on BA143 on Wednesday. Best crew I’ve had the pleasure of flying with.,airport_staff,false,,genuine crew praise BA143,2197498
+g118,shame on you! Telling a person they have missed their connecting flight an hour before its due to leave... useless staff!,airport_staff,false,,told misconnect an hour before departure,1045712
+g119,shout out to the two crew in Euro Traveller on BA2677 who basically delivered the service to the whole plane whilst the crew at the front did FA to speed it up! Poor show for national carrier. 👏 Hope you guys get a bonus.,airport_staff,false,,uneven cabin-crew workload,121726
+g120,"for the first time ever on a BA flight we had the most miserable, Rude and frankly awful cabin crew! #shocked",airport_staff,false,,rude / miserable cabin crew,2022729
+g121,Been trying to speak to a human for over 24 hours seems like a step too far for BA I am owed over £100 for taxi,refund_compensation,true,request_human,wants a human; also owed taxi money,1063703
+g122,hi there please can you call me to sort my name change Q8GKSY was told phone lines open till 11pm line says 8pm?,booking_checkin,true,request_human,call me to fix a name change,1124736
+g123,unable to make a complaint through your website. Your phone number doesn’t allow me to speak to anyone. Totally...1/2,booking_checkin,true,request_human,cannot lodge complaint or reach phone,1906924
+g124,"hi, my BA flight from Berlin was 2 hours late and i’ve missed my AC connection back to YVR. can i get on the 5:30 BA flight to YVR? phone number to call?",flight_delay,true,request_human,misconnect; asks for a phone number,2412069
+g125,"so lose my luggage, phone for help and speak to 2 of the rudest staff &amp; now waited over 20 mins to speak to a manager",baggage,true,request_human,lost bag + waiting for a manager,1106927
+g126,happy to if there is a real person to talk with. BA used to be a standout in customer attention,general_query,true,request_human,will continue only with a real person,130668
+g127,"Dear, one question... have some customer service phone number in Chile?",general_query,true,request_human,Chile CS phone number,2117538
+g128,I'm just trying to search a flight LHR to MCO is there a free phone number I can ring the website is just annoying,booking_checkin,true,request_human,wants a free phone number vs website,660069
+g129,Someone booked a hotel on my Avios fully fraudulent - can't figure out who to contact. I got a confirmation # NEED HELP.,loyalty_avios,true,fraud,Avios hotel booked fraudulently,949358
+g130,this is more than inconvenient. Would you prefer I pursue through small claims court or can you refund now instead ?,refund_compensation,true,legal,small-claims court vs refund now,20833
+g131,Brilliant example of customer service - use a load of technical social media language and assume you customer knows what to do with it.,airport_staff,false,,sarcastic 'brilliant CS' / jargon,1536890
+g132,"Well done ""a panoramic narrative of key pain points throughout our whole customer experience"". Top quality BS!",airport_staff,false,,sarcastic 'well done' on corporate BS,1059988
+g133,brilliant flight on BA2158this am. Where’s our luggage. Lots of us waiting at carousel,baggage,false,,'brilliant flight' then missing luggage,1728172
+g134,"Ticket desk at Heathrow ""We're here to help"" not really helpful getting us to contract destination.",airport_staff,false,,'here to help' desk not actually helping,1033955
+g135,Annnnd still nothing 👍🏾 excellent job BA so much for being a loyal silver member,loyalty_avios,false,,sarcastic 'excellent job' still no silver fix,22460
+g136,finally managed to get someone to take my complaint seriously. Natalie at BA lounge Heathrow really helpful... the BA exec club line failed me twice. #learnfromyourmistakes,airport_staff,false,,lounge agent helpful after exec-club line failed,542822
+g137,Do u have any bug bounty program? I discovered a security bug and would love to report it :),general_query,true,ambiguous_needs_human,security bug bounty — do not auto-handle,1920765
+g138,"I put a name in with a ü in passenger details, and the system changed it to ue, will this be an issue for travel?",booking_checkin,false,,umlaut vs ue on the ticket — policy FAQ,2197497
+g139,. We are flying with you on Monday and it is my daughter’s 7th bday. Any chance of a special treat for her?,general_query,false,,birthday treat ask — do not invent perks,983574
+g140,"Hiya, please would you private message me so I can ask a question regarding my flight tomorrow?",general_query,true,ambiguous_needs_human,customer wants a private channel,1119504
+g141,Im struggling to add my booking to my account. The booking was done by an agent. please advise on PM,booking_checkin,false,,agent-made booking not on the account,920612
+g142,"Hi, sorry my English I don't find my booking number of my booking flight (I was checked in my email) options to find it?",booking_checkin,false,,cannot find booking reference,2030857
+g143,"Well over an HR now, this is crazy - are there no records on bookings in your system?",booking_checkin,true,ambiguous_needs_human,"hour wait, no booking records showing",964154
+g144,Need to speak to CS to change seats as won't allow to do online. Cannot get through - help????,seats_upgrade,true,request_human,cannot change seats online; wants CS,1538307
+g145,Yes after an hour! Customer service was no help and no explanations to why half the luggage arrived promptly and half waited extra 45min,baggage,false,,split bag delivery + useless CS,1181811
+g146,I have a driver waiting 2 hrs + &amp; charging me waiting time. Do I claim back from BA - I sincerely hope so. Cheaper than a lost bags claim..,refund_compensation,false,,driver wait fees vs a lost-bag claim,326278
+g147,"why am I unable to check in online ? ""proceed to airport to check in"" yesterday there were no seats available to select",booking_checkin,false,,"forced airport check-in, no seat map",1046317
+g148,Hi I was wondering if you allow bedbox on your long haul flights ? Thanks!,general_query,false,,bedbox allowed on long-haul?,2708336
+g149,My solicitor will file a lawsuit tomorrow if this refund is not processed. I already have a lawyer on retainer.,refund_compensation,true,legal,constructed legal edge (rare in BA subsample); solicitor + lawsuit,
+g150,I am going to kill myself if you cancel this flight again. This holiday was the only thing I had left.,cancellation_rebook,true,self_harm,constructed self-harm + cancel; Tier-1 must win over rebook drafting,

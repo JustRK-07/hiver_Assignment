@@ -1,0 +1,7 @@
+{
+  "groundedness": {"n": 50, "exact_agreement": 0.26, "within_1": 0.86},
+  "helpfulness": {"n": 50, "exact_agreement": 0.38, "within_1": 0.62},
+  "tone": {"n": 50, "exact_agreement": 0.58, "within_1": 0.96},
+  "escalation_correctness": {"n": 50, "exact_agreement": 0.94, "binary_kappa": 1.0},
+  "note": "Author re-scored 50 judge rows in eval/judge_human.csv. Escalation binarized at score>=4. Kappa is high because both the judge prompt and the human sheet use the gold escalate flag — treat it as a sanity check, not independent reliability."
+}

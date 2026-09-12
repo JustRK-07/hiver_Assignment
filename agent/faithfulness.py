@@ -46,4 +46,5 @@ def overlap_ratio(reply: str, sources: list[str]) -> float:
 
 
 def is_faithful(reply: str, retrieved_replies: list[str], ticket: str, min_overlap: float) -> bool:
+    """Cheap send-path check. LLM-as-judge lives in eval/, not here."""
     return overlap_ratio(reply, retrieved_replies + [ticket]) >= min_overlap

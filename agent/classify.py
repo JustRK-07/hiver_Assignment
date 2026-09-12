@@ -1,4 +1,10 @@
-"""Intent classifier: keyword scores, optional Groq LLM overlay."""
+"""Intent classifier: keyword scores, optional Groq LLM overlay.
+
+Keywords keep the 15-minute no-key path alive and tag the retrieval index
+offline. When GROQ_API_KEY is set, classify() prefers the LLM and falls
+back to keywords if the JSON is malformed or the label is off-taxonomy.
+Few-shot examples are BA-specific; do not copy them to another brand.
+"""
 
 from __future__ import annotations
 
@@ -29,8 +35,8 @@ def _keyword_score(text: str, keywords: list[str]) -> int:
     return hits
 
 
-def classify_keyword(text: str, taxonomy: dict | None = None) -> IntentPrediction:
-    taxonomy = taxonomy or load_taxonomy()
+def classify_keyword(text: str) -> IntentPrediction:
+    taxonomy = load_taxonomy()
     intents = taxonomy["intents"]
     scores = []
     for item in intents:
@@ -50,10 +56,10 @@ def classify_keyword(text: str, taxonomy: dict | None = None) -> IntentPredictio
     return IntentPrediction(intent, conf, "keyword", f"keyword hits={best}")
 
 
-def classify_llm(text: str, taxonomy: dict | None = None) -> IntentPrediction | None:
+def classify_llm(text: str) -> IntentPrediction | None:
     if not os.getenv("GROQ_API_KEY"):
         return None
-    taxonomy = taxonomy or load_taxonomy()
+    taxonomy = load_taxonomy()
     labels = [i["id"] for i in taxonomy["intents"]]
     shots = [
         ("BA0273 delayed 3 hours sitting at the gate with no info", "flight_delay"),
@@ -88,8 +94,11 @@ Return JSON: {{"intent": "...", "confidence": 0.0-1.0, "rationale": "one sentenc
 
 
 def classify(text: str) -> IntentPrediction:
-    taxonomy = load_taxonomy()
-    llm = classify_llm(text, taxonomy)
+    try:
+        llm = classify_llm(text)
+    except Exception:
+        # Rate-limit / outage: still produce a label so the harness finishes.
+        llm = None
     if llm:
         return llm
-    return classify_keyword(text, taxonomy)
+    return classify_keyword(text)
